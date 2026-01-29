@@ -12,10 +12,12 @@ st.set_page_config(
 
 # ------------------ Lottie Loader ------------------
 def load_lottie(url):
-    r = requests.get(url)
-    if r.status_code == 200:
-        return r.json()
-    return None
+    try:
+        r = requests.get(url)
+        if r.status_code == 200:
+            return r.json()
+    except:
+        return None
 
 launch_anim = load_lottie("https://assets10.lottiefiles.com/packages/lf20_jcikwtux.json")
 success_anim = load_lottie("https://assets10.lottiefiles.com/packages/lf20_touohxv0.json")
@@ -71,12 +73,14 @@ if not st.session_state.launch:
 
     if st.button("🚀 Launch Leaf X-Ray"):
         st.session_state.launch = True
-        st.experimental_rerun()
+        st.rerun()   # ✅ FIXED HERE
 
 # ------------------ Launch Animation ------------------
 else:
     st.markdown('<div class="launch-text">Launching Leaf X-Ray...</div>', unsafe_allow_html=True)
-    st_lottie(launch_anim, height=300)
+
+    if launch_anim:
+        st_lottie(launch_anim, height=300)
 
     progress = st.progress(0)
     for i in range(100):
@@ -84,11 +88,14 @@ else:
         progress.progress(i + 1)
 
     st.markdown('<div class="launch-text">✅ Successfully Launched!</div>', unsafe_allow_html=True)
-    st_lottie(success_anim, height=250)
+
+    if success_anim:
+        st_lottie(success_anim, height=250)
 
     time.sleep(3)
 
     # Redirect to official website
-    st.markdown("""
-    <meta http-equiv="refresh" content="0; url='https://your-official-website.com'" />
-    """, unsafe_allow_html=True)
+    st.markdown(
+        "<meta http-equiv='refresh' content='0; url=https://your-official-website.com' />",
+        unsafe_allow_html=True
+    )
