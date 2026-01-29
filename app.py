@@ -73,13 +73,13 @@ if not st.session_state.launch:
 
     if st.button("🚀 Launch Leaf X-Ray"):
         st.session_state.launch = True
-        st.rerun()   # ✅ FIXED HERE
+        st.rerun()
 
 # ------------------ Launch Animation ------------------
 else:
     st.markdown('<div class="launch-text">Launching Leaf X-Ray...</div>', unsafe_allow_html=True)
 
-    if launch_anim:
+    if launch_anim is not None:
         st_lottie(launch_anim, height=300)
 
     progress = st.progress(0)
@@ -87,15 +87,32 @@ else:
         time.sleep(0.08)  # ~8 seconds
         progress.progress(i + 1)
 
+    # ------------------ Success Screen ------------------
     st.markdown('<div class="launch-text">✅ Successfully Launched!</div>', unsafe_allow_html=True)
 
-    if success_anim:
+    if success_anim is not None:
         st_lottie(success_anim, height=250)
 
-    time.sleep(3)
+    st.markdown("<br>", unsafe_allow_html=True)
 
-    # Redirect to official website
+    # View Leaf X-Ray App Button
     st.markdown(
-        "<meta http-equiv='refresh' content='0; url=https://your-official-website.com' />",
+        """
+        <div style="text-align:center;">
+            <a href="https://your-official-website.com" target="_blank">
+                <button style="
+                    background-color:#2E7D32;
+                    color:white;
+                    padding:14px 30px;
+                    font-size:18px;
+                    border:none;
+                    border-radius:12px;
+                    cursor:pointer;
+                ">
+                    🌿 View Leaf X-Ray App
+                </button>
+            </a>
+        </div>
+        """,
         unsafe_allow_html=True
     )
