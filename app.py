@@ -3,14 +3,14 @@ import time
 import requests
 from streamlit_lottie import st_lottie
 
-# ================== PAGE CONFIG ==================
+# ================= PAGE CONFIG =================
 st.set_page_config(
     page_title="Leaf X-Ray | AI Plant Diagnostics",
     page_icon="🌿",
     layout="centered"
 )
 
-# ================== LOTTIE LOADER ==================
+# ================= LOTTIE LOADER =================
 def load_lottie(url):
     try:
         r = requests.get(url)
@@ -23,25 +23,21 @@ def load_lottie(url):
 launch_anim = load_lottie("https://assets10.lottiefiles.com/packages/lf20_jcikwtux.json")
 success_anim = load_lottie("https://assets10.lottiefiles.com/packages/lf20_touohxv0.json")
 
-# ================== ANIMATED GREEN BACKGROUND ==================
+# ================= ANIMATED GREEN BACKGROUND =================
 st.markdown("""
 <style>
-
-/* Full animated green background */
 .stApp {
     background: linear-gradient(-45deg, #0b3d0b, #1b5e20, #2e7d32, #66bb6a);
     background-size: 400% 400%;
     animation: gradientBG 18s ease infinite;
 }
 
-/* Gradient animation */
 @keyframes gradientBG {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
-/* Floating leaf animation */
 .leaf {
     position: fixed;
     top: -10%;
@@ -52,17 +48,10 @@ st.markdown("""
 }
 
 @keyframes fall {
-    0% {
-        transform: translateX(0) rotate(0deg);
-        top: -10%;
-    }
-    100% {
-        transform: translateX(140px) rotate(360deg);
-        top: 110%;
-    }
+    0% { transform: translateX(0) rotate(0deg); top: -10%; }
+    100% { transform: translateX(140px) rotate(360deg); top: 110%; }
 }
 
-/* Text styles */
 .title {
     font-size: 48px;
     font-weight: bold;
@@ -89,16 +78,14 @@ st.markdown("""
     font-weight: bold;
 }
 
-/* Keep content above background */
 .block-container {
     position: relative;
     z-index: 1;
 }
-
 </style>
 """, unsafe_allow_html=True)
 
-# ================== FLOATING LEAVES ==================
+# ================= FLOATING LEAVES =================
 st.markdown("""
 <img class="leaf" src="https://pngimg.com/uploads/leaf/leaf_PNG3681.png" style="left:8%; animation-duration:20s;">
 <img class="leaf" src="https://pngimg.com/uploads/leaf/leaf_PNG3686.png" style="left:35%; animation-duration:26s;">
@@ -106,11 +93,11 @@ st.markdown("""
 <img class="leaf" src="https://pngimg.com/uploads/leaf/leaf_PNG3701.png" style="left:85%; animation-duration:30s;">
 """, unsafe_allow_html=True)
 
-# ================== SESSION STATE ==================
+# ================= SESSION STATE =================
 if "launch" not in st.session_state:
     st.session_state.launch = False
 
-# ================== INTRO SCREEN ==================
+# ================= INTRO SCREEN =================
 if not st.session_state.launch:
     st.markdown('<div class="title">🌿 Leaf X-Ray</div>', unsafe_allow_html=True)
     st.markdown(
@@ -131,11 +118,14 @@ if not st.session_state.launch:
 
     st.markdown("<br><br>", unsafe_allow_html=True)
 
-    if st.button("🚀 Launch Leaf X-Ray"):
-        st.session_state.launch = True
-        st.rerun()
+    # -------- CENTERED BUTTON --------
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        if st.button("🚀 Launch Leaf X-Ray", use_container_width=True):
+            st.session_state.launch = True
+            st.rerun()
 
-# ================== LAUNCH SEQUENCE ==================
+# ================= LAUNCH SEQUENCE =================
 else:
     st.markdown('<div class="launch-text">Launching Leaf X-Ray...</div>', unsafe_allow_html=True)
 
@@ -147,7 +137,7 @@ else:
         time.sleep(0.08)  # ~8 seconds
         progress.progress(i + 1)
 
-    # ================== SUCCESS SCREEN ==================
+    # ================= SUCCESS SCREEN =================
     st.markdown('<div class="launch-text">✅ Successfully Launched!</div>', unsafe_allow_html=True)
 
     if success_anim is not None:
@@ -155,24 +145,21 @@ else:
 
     st.markdown("<br>", unsafe_allow_html=True)
 
-    # ================== VIEW APP BUTTON ==================
-    st.markdown(
-        """
-        <div style="text-align:center;">
-            <a href="https://your-official-website.com" target="_blank">
-                <button style="
-                    background-color:#2E7D32;
-                    color:white;
-                    padding:14px 32px;
-                    font-size:18px;
-                    border:none;
-                    border-radius:14px;
-                    cursor:pointer;
-                ">
-                    🌿 View Leaf X-Ray App
-                </button>
-            </a>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
+    # ================= VIEW APP BUTTON =================
+    st.markdown("""
+    <div style="text-align:center;">
+        <a href="https://your-official-website.com" target="_blank">
+            <button style="
+                background-color:#2E7D32;
+                color:white;
+                padding:14px 32px;
+                font-size:18px;
+                border:none;
+                border-radius:14px;
+                cursor:pointer;
+            ">
+                🌿 View Leaf X-Ray App
+            </button>
+        </a>
+    </div>
+    """, unsafe_allow_html=True)
