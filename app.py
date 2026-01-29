@@ -148,7 +148,7 @@ else:
     # ================= VIEW APP BUTTON =================
     st.markdown("""
     <div style="text-align:center;">
-        <a href="https://your-official-website.com" target="_blank">
+        <a href="https://kpjfaiyjhtt4gxzb2eoydc.streamlit.app/" target="_blank">
             <button style="
                 background-color:#2E7D32;
                 color:white;
