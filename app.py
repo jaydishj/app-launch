@@ -94,8 +94,10 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ================= SESSION STATE =================
+# ================= SESSION STATE =================
 if "launch" not in st.session_state:
     st.session_state.launch = False
+
 
 # ================= INTRO SCREEN =================
 if not st.session_state.launch:
@@ -109,10 +111,10 @@ if not st.session_state.launch:
 
     st.markdown("""
     <div class="info">
-    🔬 AI-powered leaf anatomy visualization<br>
-    🌱 No physical cross-sectioning required<br>
-    🧠 Designed for students, researchers & educators<br>
-    🌍 Digital & sustainable plant science learning
+        🔬 AI-powered leaf anatomy visualization<br>
+        🌱 No physical cross-sectioning required<br>
+        🧠 Designed for students, researchers & educators<br>
+        🌍 Digital & sustainable plant science learning
     </div>
     """, unsafe_allow_html=True)
 
@@ -125,7 +127,8 @@ if not st.session_state.launch:
             st.session_state.launch = True
             st.rerun()
 
-# ================= LAUNCH SEQUENCE =================
+
+# ================= LAUNCH + SUCCESS SEQUENCE =================
 else:
     st.markdown('<div class="launch-text">Launching Leaf X-Ray...</div>', unsafe_allow_html=True)
 
@@ -134,7 +137,7 @@ else:
 
     progress = st.progress(0)
     for i in range(100):
-        time.sleep(0.08)  # ~8 seconds
+        time.sleep(0.08)
         progress.progress(i + 1)
 
     # ================= SUCCESS SCREEN =================
@@ -163,20 +166,20 @@ else:
         </a>
     </div>
     """, unsafe_allow_html=True)
+
     # ================= QR CODE DISPLAY =================
-st.markdown("<br><br>", unsafe_allow_html=True)
+    st.markdown("<br><br>", unsafe_allow_html=True)
 
-st.markdown(
-    "<div class='launch-text'>📱 Scan QR Code to Visit Leaf X-Ray</div>",
-    unsafe_allow_html=True
-)
-
-# Center QR image
-col1, col2, col3 = st.columns([1, 2, 1])
-with col2:
-    st.image(
-        "xray.png",
-        width=220,
-        caption="Leaf X-Ray – Official App"
+    st.markdown(
+        "<div class='launch-text'>📱 Scan QR Code to Visit Leaf X-Ray</div>",
+        unsafe_allow_html=True
     )
 
+    # Center QR image
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        st.image(
+            "xray.png",
+            width=220,
+            caption="Leaf X-Ray – Official App"
+        )
