@@ -177,7 +177,7 @@ else:
 
     # Center QR image
     col1, col2, col3 = st.columns([1, 2, 1])
-    with col3:
+    with col2:
         st.image(
             "xray.png",
             width=450,
