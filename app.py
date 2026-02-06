@@ -171,7 +171,7 @@ else:
     st.markdown("<br><br>", unsafe_allow_html=True)
 
     st.markdown(
-        "<div class='launch-text'>📱 Scan QR Code to Visit Leaf X-Ray</div>",
+        "<div class='launch-text'>📱 Scan QR Code to Visit Leaf X-Ray official app</div>",
         unsafe_allow_html=True
     )
 
