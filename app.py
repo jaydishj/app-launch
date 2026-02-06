@@ -180,6 +180,6 @@ else:
     with col2:
         st.image(
             "xray.png",
-            width=450,
+            width=460,
             caption="Leaf X-Ray – Official App"
         )
