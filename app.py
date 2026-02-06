@@ -163,3 +163,20 @@ else:
         </a>
     </div>
     """, unsafe_allow_html=True)
+    # ================= QR CODE DISPLAY =================
+st.markdown("<br><br>", unsafe_allow_html=True)
+
+st.markdown(
+    "<div class='launch-text'>📱 Scan QR Code to Visit Leaf X-Ray</div>",
+    unsafe_allow_html=True
+)
+
+# Center QR image
+col1, col2, col3 = st.columns([1, 2, 1])
+with col2:
+    st.image(
+        "xray.png",
+        width=220,
+        caption="Leaf X-Ray – Official App"
+    )
+
