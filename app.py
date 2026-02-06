@@ -177,9 +177,9 @@ else:
 
     # Center QR image
     col1, col2, col3 = st.columns([1, 2, 1])
-    with col2:
+    with col3:
         st.image(
             "xray.png",
-            width=220,
+            width=450,
             caption="Leaf X-Ray – Official App"
         )
