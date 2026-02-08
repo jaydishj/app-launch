@@ -137,7 +137,7 @@ else:
 
     progress = st.progress(0)
     for i in range(100):
-        time.sleep(5)
+        time.sleep(0.10)
         progress.progress(i + 1)
 
     # ================= SUCCESS SCREEN =================
